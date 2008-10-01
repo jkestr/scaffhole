@@ -3,7 +3,7 @@
 <table>
   <tr>
     <% controller.klass.columns_hash.each do |name, attrs| %>
-      <th><%= name.to_s %></th>
+      <th><%= name.to_s.titleize %></th>
     <% end %>
   </tr>
   <% @collection.each do |entity| %>

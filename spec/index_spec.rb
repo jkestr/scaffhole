@@ -2,11 +2,7 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 ApplicationController.scaffhole :dummy
 
-describe DummiesController, "index" do
-  include ActionController::TestProcess
-  include ActionController::Assertions
-  attr_reader :request, :response
-  
+describe DummiesController, "index" do  
   def do_get
     get :index
   end

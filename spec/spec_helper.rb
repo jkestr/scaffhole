@@ -14,9 +14,10 @@ require 'scaffhole.rb'
 require 'spec'
 require 'spec/rails'
 
-# This is here to allow you to integrate views on all of your controller specs
-Spec::Runner.configuration.before(:all, :behaviour_type => :controller) do
-  @integrate_views = true
+Spec::Rails::Example::RailsExampleGroup.class_eval do
+  include ActionController::TestProcess
+  include ActionController::Assertions
+  attr_reader :request, :response
 end
 
 def setup_controller
@@ -32,4 +33,3 @@ def setup_controller
   @response = ActionController::TestResponse.new
   @response.session = @request.session
 end
-

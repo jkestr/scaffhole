@@ -1,3 +1,5 @@
+# Might want to move a lot of this stuff to Resource,
+# just for naming's sake.
 module Scaffhole
   module Klass
     def self.included(base)

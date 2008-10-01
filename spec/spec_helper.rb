@@ -18,3 +18,18 @@ require 'spec/rails'
 Spec::Runner.configuration.before(:all, :behaviour_type => :controller) do
   @integrate_views = true
 end
+
+def setup_controller
+  ActionController::Routing::Routes.draw do |map|
+    map.resources :dummies
+  end
+  
+  @controller_class = DummiesController
+  raise "Can't determine controller class for #{@controller_class_name}" if @controller_class.nil?
+
+  @controller = @controller_class.new
+  @request = ActionController::TestRequest.new
+  @response = ActionController::TestResponse.new
+  @response.session = @request.session
+end
+

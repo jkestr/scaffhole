@@ -5,8 +5,8 @@ RAILS_ROOT = ROOT unless defined?(RAILS_ROOT)
 
 ENV['RAILS_ENV'] ||= 'test'
 
-config = YAML::load_file(File.dirname(__FILE__) + '/fixtures/database.yml')
-ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/debug.log")
+config = YAML::load_file(File.dirname(__FILE__) + '/database.yml')
+ActiveRecord::Base.logger = Logger.new("/dev/null")
 ActiveRecord::Base.establish_connection(config[ENV['RAILS_ENV'] || 'test'])
 
 ActiveRecord::Base.connection.create_table :dummies, :force => true do |table|

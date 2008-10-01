@@ -1,5 +1,22 @@
 = Scaffhole
 
-Rails scaffolds for Rails assholes.
+Lets you leave scaffold-shaped holes in your app.
+
+== Usage
+
+  class ApplicationController < ActionController::Base
+  
+    # Create a FoosController that provides scaffold interface
+    # for a Foo ActiveRecord model. Make sure to add to routes.rb.
+    scaffhole :foo
+    
+  end
+
+TODO
+
+* add more options
+* create
+* update
+* destroy
 
 (c) Copyright 2008 Pat Nakajima. All Rights Reserved. 

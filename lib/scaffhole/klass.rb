@@ -10,11 +10,8 @@ module Scaffhole
     module ClassMethods
       def scaffhole(name)
         klass_name = "#{name.to_s.pluralize}_controller".classify
-        if Object.const_defined?(klass_name)
-          klass = klass_name.constantize
-        else
-          klass = Class.new(self)
-          Object.const_set(klass_name, klass)
+        klass = klass_name.constantize rescue begin
+          Object.const_set(klass_name, Class.new(self))
         end
         
         klass.send(:include, Scaffhole::Resource)

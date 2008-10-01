@@ -1,10 +1,10 @@
-require 'index'
+require 'actions'
 
 module Scaffhole
   module Resource
     def self.included(base)
       base.cattr_accessor :klass
-      base.send(:include, Scaffhole::Index)
+      base.send(:include, Scaffhole::Actions)
       base.send(:append_view_path, File.join(File.dirname(__FILE__), '..', '..', 'views'))
     end
     

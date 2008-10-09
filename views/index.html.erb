@@ -1,13 +1,23 @@
 <style type="text/css">
-  .scaffhole { font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Verdana, sans-serif; }
+  .scaffhole, .pagination { font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Verdana, sans-serif; width: 75%; margin-left: auto; margin-right: auto; }
   h1.scaffhole span { font-size: 12px; }
-  table.scaffhole-listing { width: 75%; margin-left: auto; margin-right: auto; }
   table.scaffhole-listing th { font-weight: bold; border-bottom: 1px solid #bbb; font-size: 12px; padding: 8px; }
   table.scaffhole-listing td { padding: 10px; border-bottom: 1px solid #ddd; font-size: 11px; }
   table.scaffhole-listing td a, table.scaffhole-listing th a { color: #000; text-decoration: none; }
   table.scaffhole-listing td a:hover, table.scaffhole-listing th a:hover { text-decoration: underline; }
   table.scaffhole-listing td.tools, table.scaffhole-listing td.tools a { color: #808080; text-align: right; }
   table.scaffhole-listing tr.scaffhole-even { background-color: #eee; }
+  
+  .pagination { text-align: left; padding: .3em; margin-top: 10px; font-size: 12px; }
+  .pagination a, .pagination span { padding: .2em .5em; }
+  .pagination span.disabled { color: #aaa; }
+  .pagination span.current { font-weight: bold; color: #ff0084; }
+  .pagination a { border: 1px solid #ddd; color: #0063dc; text-decoration: none; }
+  .pagination a:hover, .pagination a:focus { border-color: #003366; background: #0063dc; color: #fff; }
+  .pagination .page_info { color: #aaa; padding-top: .8em; }
+  .pagination .prev_page, .pagination .next_page { border-width: 2px; }
+  .pagination .prev_page { margin-right: 1em; }
+  .pagination .next_page { margin-left: 1em; }
 </style>
 
 <h1 class="scaffhole"><%= controller.klass.name.pluralize %> <span><%= link_to 'new', { :action => 'new' } %></span></h1>
@@ -28,3 +38,5 @@
     </tr>
   <% end -%>
 </table>
+
+<%= will_paginate(@collection) rescue nil %>

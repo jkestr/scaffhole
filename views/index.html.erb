@@ -1,19 +1,21 @@
 <h1><%= controller.klass.name %></h1>
 
-<table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="scaffhole-listing">
   <tr>
-    <% controller.klass.columns_hash.each do |name, attrs| %>
-      <th><%= name.to_s.titleize %></th>
-    <% end %>
+  <% controller.scaffhole_options[:list_columns].each do |name| -%>
+    <th><%= name.to_s.titleize.downcase %></th>
+  <% end -%>
+    <th></th>
   </tr>
-  <% @collection.each do |entity| %>
+  <% @collection.each do |entity| -%>
     <tr>
-      <% controller.klass.columns_hash.each do |name, attrs| %>
+      <% controller.scaffhole_options[:list_columns].each do |name, attrs| -%>
         <td><%= entity.send(name) %></td>
-      <% end %>
+      <% end -%>
+      <td><%= link_to('edit', { :action => :edit, :id => entity.id }) %> | <%= link_to('delete', entity, :method => :delete)%></td>
     </tr>
-  <% end %>
+  <% end -%>
 </table>
-
+<%= link_to 'new', { :action => 'new' } %>
 
 

@@ -2,23 +2,30 @@
 
 Lets you leave scaffold-shaped holes in your app.
 
+== Features
+
+  * Complete CRUD functionality (index/new/create/update/show/destroy)
+  * Support for will_paginate in the index method
+  * Support for xml/json
+
 == Usage
 
   class ApplicationController < ActionController::Base
   
     # Create a FoosController that provides scaffold interface
     # for a Foo ActiveRecord model. Make sure to add to routes.rb.
-    scaffhole :foo
+    scaffhole :foo,
+      :list_columns => [:id, :name], # displayed in index.html.erb
+      :show_columns => [:id, :name], # displayed in show.html.erb
+      :edit_columns => [:id, :name]  # displayed in edit.html.erb / new.html.erb
     
   end
 
 TODO
-
+* support for excluding columns, not just a list of columns
+* better views
 * add more options
-* new
-* edit
-* create
-* update
-* destroy
+* tests for new actions
+* tests for options
 
 (c) Copyright 2008 Pat Nakajima. All Rights Reserved. 

@@ -1,0 +1,4 @@
+<h1>Show <%= controller.klass.name %></h1>
+<% controller.scaffhole_options[:show_columns].each do |column| -%>
+  <b><%= column %></b>: <%= @resource.send(column) %><br /><br />
+<% end -%>

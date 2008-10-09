@@ -1,0 +1,8 @@
+<h1>New <%= controller.klass.name %></h1>
+<% form_for(@resource) do |f| %>
+  <% controller.scaffhole_options[:edit_columns].each do |column| -%>
+    <%= f.label(column) %><br >
+    <%= f.text_field(column) %><br /><br />
+  <% end -%>
+  <%= f.submit %>
+<% end -%>

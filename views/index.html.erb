@@ -1,21 +1,30 @@
-<h1><%= controller.klass.name %></h1>
+<style type="text/css">
+  .scaffhole { font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Verdana, sans-serif; }
+  h1.scaffhole span { font-size: 12px; }
+  table.scaffhole-listing { width: 75%; margin-left: auto; margin-right: auto; }
+  table.scaffhole-listing th { font-weight: bold; border-bottom: 1px solid #bbb; font-size: 12px; padding: 8px; }
+  table.scaffhole-listing td { padding: 10px; border-bottom: 1px solid #ddd; font-size: 11px; }
+  table.scaffhole-listing td a, table.scaffhole-listing th a { color: #000; text-decoration: none; }
+  table.scaffhole-listing td a:hover, table.scaffhole-listing th a:hover { text-decoration: underline; }
+  table.scaffhole-listing td.tools, table.scaffhole-listing td.tools a { color: #808080; text-align: right; }
+  table.scaffhole-listing tr.scaffhole-even { background-color: #eee; }
+</style>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0" class="scaffhole-listing">
+<h1 class="scaffhole"><%= controller.klass.name.pluralize %> <span><%= link_to 'new', { :action => 'new' } %></span></h1>
+
+<table border="0" cellpadding="0" cellspacing="0" class="scaffhole scaffhole-listing">
   <tr>
   <% controller.scaffhole_options[:list_columns].each do |name| -%>
     <th><%= name.to_s.titleize.downcase %></th>
   <% end -%>
-    <th></th>
+    <th>&nbsp;</th>
   </tr>
   <% @collection.each do |entity| -%>
-    <tr>
+    <tr class="<%= cycle('scaffhole-odd', 'scaffhole-even') %>">
       <% controller.scaffhole_options[:list_columns].each do |name, attrs| -%>
-        <td><%= entity.send(name) %></td>
+        <td><%= entity.send(name) %>&nbsp;</td>
       <% end -%>
-      <td><%= link_to('edit', { :action => :edit, :id => entity.id }) %> | <%= link_to('delete', entity, :method => :delete)%></td>
+      <td class="tools"><%= link_to('edit', { :action => :edit, :id => entity.id }) %> | <%= link_to('delete', entity, :method => :delete)%></td>
     </tr>
   <% end -%>
 </table>
-<%= link_to 'new', { :action => 'new' } %>
-
-

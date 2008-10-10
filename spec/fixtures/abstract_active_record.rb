@@ -16,4 +16,6 @@ ActiveRecord::Base.connection.create_table :dummies, :force => true do |table|
   table.column :updated_at, :datetime
 end
 
-class Dummy < ActiveRecord::Base; end
+class Dummy < ActiveRecord::Base
+  validates_presence_of :name
+end

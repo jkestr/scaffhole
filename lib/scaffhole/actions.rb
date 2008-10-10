@@ -74,7 +74,7 @@ module Scaffhole
             format.json { head :ok }
           else
             flash[:error] = 'Record could not be updated.'
-            format.html { render :action => 'edit' }
+            format.html { render :template => 'edit.html.erb' }
             format.xml  { render :xml  => @resource.errors, :status => :unprocessable_entity }
             format.json { render :json => @resource.errors, :status => :unprocessable_entity }
           end

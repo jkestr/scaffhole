@@ -83,6 +83,30 @@ describe DummiesController do
     end
   end
   
+  describe "POST /dummies" do
+    def do_post
+      post :create, :dummy => { :name => 'a new one!' }
+    end
+    
+    it "creates a dummy" do
+      proc {
+        do_post
+      }.should change(Dummy, :count).by(1)
+    end
+  end
+  
+  describe "DELETE /dummies/1" do
+    def do_delete
+      delete :destroy, :id => @dummy.to_param
+    end
+    
+    it "destroys a dummy" do
+      proc {
+        do_delete
+      }.should change(Dummy, :count).by(-1)
+    end
+  end
+  
   describe "PUT /dummies/1" do
     def do_put(options={})
       put :update, :id => @dummy.to_param, :dummy => { :name => 'new name!' }.merge(options)
